@@ -1,0 +1,7 @@
+@import "../../styles/mixins.css";
+@import "../../styles/variables.css";
+
+.header {
+  @include flex-center;
+  font-family: var(--font-family);
+}
