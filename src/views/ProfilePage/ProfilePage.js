@@ -1,4 +1,3 @@
-// src/views/ProfilePage/ProfilePage.js
 import { Route, Routes, Link, useMatch } from "react-router-dom";
 import Layout from "../../components/Layout/Layout";
 import Sidebar from "../../components/Common/Sidebar";
