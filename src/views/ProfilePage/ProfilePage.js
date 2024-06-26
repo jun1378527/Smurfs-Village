@@ -1,4 +1,5 @@
-import { Route, Switch, Link, useRouteMatch } from "react-router-dom";
+// src/views/ProfilePage/ProfilePage.js
+import { Route, Routes, Link, useMatch } from "react-router-dom";
 import Layout from "../../components/Layout/Layout";
 import Sidebar from "../../components/Common/Sidebar";
 import MyProfile from "./MyProfile";
@@ -7,7 +8,7 @@ import Bookmarks from "./Bookmarks";
 import "./ProfilePage.css";
 
 const ProfilePage = () => {
-  let { path, url } = useRouteMatch();
+  let match = useMatch("/profile/*");
 
   return (
     <Layout>
@@ -15,22 +16,22 @@ const ProfilePage = () => {
         <Sidebar>
           <ul>
             <li>
-              <Link to={`${url}`}>My Profile</Link>
+              <Link to="/profile">My Profile</Link>
             </li>
             <li>
-              <Link to={`${url}/posts`}>My Posts</Link>
+              <Link to="/profile/posts">My Posts</Link>
             </li>
             <li>
-              <Link to={`${url}/bookmarks`}>Bookmarks</Link>
+              <Link to="/profile/bookmarks">Bookmarks</Link>
             </li>
           </ul>
         </Sidebar>
         <div className="profile-content">
-          <Switch>
-            <Route exact path={path} component={MyProfile} />
-            <Route path={`${path}/posts`} component={MyPosts} />
-            <Route path={`${path}/bookmarks`} component={Bookmarks} />
-          </Switch>
+          <Routes>
+            <Route exact path="/profile" element={<MyProfile />} />
+            <Route path="/profile/posts" element={<MyPosts />} />
+            <Route path="/profile/bookmarks" element={<Bookmarks />} />
+          </Routes>
         </div>
       </div>
     </Layout>

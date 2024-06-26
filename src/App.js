@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import MainPage from "./views/MainPage/MainPage";
 import LoginPage from "./views/LoginPage/LoginPage";
 import RegisterPage from "./views/RegisterPage/RegisterPage";
@@ -12,24 +12,25 @@ import "./styles/global.css";
 const App = () => {
   return (
     <Router>
-      <Switch>
-        <Route path="/" exact component={MainPage} />
-        <Route path="/login" component={LoginPage} />
-        <Route path="/register" component={RegisterPage} />
-        <Route path="/profile" component={ProfilePage} />
-        <Route path="/projects" exact component={ProjectListPage} />
+      <Routes>
+        <Route path="/" exact element={<MainPage />} />
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="/register" element={<RegisterPage />} />
+        <Route path="/profile/*" element={<ProfilePage />} />
+        <Route path="/projects" exact element={<ProjectListPage />} />
         <Route
           path="/projects/:id"
-          render={props => (
-            <ProjectDetailPage {...props} projectType="funding" />
-          )}
+          element={<ProjectDetailPage projectType="funding" />}
         />
         <Route
           path="/create-funding-project"
-          component={CreateFundingProjectPage}
+          element={<CreateFundingProjectPage />}
         />
-        <Route path="/create-with-project" component={CreateWithProjectPage} />
-      </Switch>
+        <Route
+          path="/create-with-project"
+          element={<CreateWithProjectPage />}
+        />
+      </Routes>
     </Router>
   );
 };
