@@ -7,6 +7,10 @@ const MatterComponent = () => {
   const engineRef = useRef(null);
   const renderRef = useRef(null);
   const wallsRef = useRef([]);
+  const scrollDeltaY = useRef(0);
+  const isScrolling = useRef(false);
+  const lastScrollTime = useRef(Date.now());
+  const scrollBehavior = useRef("smooth");
 
   useEffect(() => {
     const { Engine, Render, Runner, Bodies, Mouse, MouseConstraint, World } =
@@ -87,7 +91,6 @@ const MatterComponent = () => {
 
     render.mouse = mouse;
 
-    // Mouse wheel 이벤트 리스너를 제거하지 않음
     Runner.run(runner, engine);
     Render.run(render);
 
@@ -134,9 +137,42 @@ const MatterComponent = () => {
   useEffect(() => {
     const handleWheel = event => {
       if (sceneRef.current && sceneRef.current.contains(event.target)) {
-        // window 스크롤을 업데이트
-        window.scrollBy(0, event.deltaY);
+        console.log("Wheel event detected on canvas:", event);
+        event.preventDefault(); // 기본 스크롤 방지
+        const now = Date.now();
+
+        if (now - lastScrollTime.current < 100) {
+          // 최근 스크롤 이벤트로부터 100ms 이내에 새 스크롤 이벤트가 발생한 경우
+          scrollBehavior.current = "auto";
+        } else {
+          // 최근 스크롤 이벤트로부터 100ms 이후에 새 스크롤 이벤트가 발생한 경우
+          scrollBehavior.current = "smooth";
+        }
+
+        scrollDeltaY.current += event.deltaY;
+        lastScrollTime.current = now;
+
+        if (!isScrolling.current) {
+          isScrolling.current = true;
+          requestAnimationFrame(performScroll);
+        }
       }
+    };
+
+    const performScroll = () => {
+      console.log(
+        "Performing scroll with deltaY:",
+        scrollDeltaY.current,
+        "behavior:",
+        scrollBehavior.current
+      );
+      window.scrollBy({
+        top: scrollDeltaY.current,
+        left: 0,
+        behavior: scrollBehavior.current, // 부드러운 스크롤
+      });
+      scrollDeltaY.current = 0;
+      isScrolling.current = false;
     };
 
     window.addEventListener("wheel", handleWheel);
