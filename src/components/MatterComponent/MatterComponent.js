@@ -141,11 +141,11 @@ const MatterComponent = () => {
         event.preventDefault(); // 기본 스크롤 방지
         const now = Date.now();
 
-        if (now - lastScrollTime.current < 100) {
-          // 최근 스크롤 이벤트로부터 100ms 이내에 새 스크롤 이벤트가 발생한 경우
+        if (now - lastScrollTime.current < 200) {
+          // 최근 스크롤 이벤트로부터 200ms 이내에 새 스크롤 이벤트가 발생한 경우
           scrollBehavior.current = "auto";
         } else {
-          // 최근 스크롤 이벤트로부터 100ms 이후에 새 스크롤 이벤트가 발생한 경우
+          // 최근 스크롤 이벤트로부터 200ms 이후에 새 스크롤 이벤트가 발생한 경우
           scrollBehavior.current = "smooth";
         }
 
@@ -175,10 +175,10 @@ const MatterComponent = () => {
       isScrolling.current = false;
     };
 
-    window.addEventListener("wheel", handleWheel);
+    window.addEventListener("wheel", handleWheel, { passive: false });
 
     return () => {
-      window.removeEventListener("wheel", handleWheel);
+      window.removeEventListener("wheel", handleWheel, { passive: false });
     };
   }, []);
 
