@@ -137,11 +137,10 @@ const MatterComponent = () => {
   useEffect(() => {
     const handleWheel = event => {
       if (sceneRef.current && sceneRef.current.contains(event.target)) {
-        console.log("Wheel event detected on canvas:", event);
         event.preventDefault(); // 기본 스크롤 방지
         const now = Date.now();
 
-        if (now - lastScrollTime.current < 200) {
+        if (now - lastScrollTime.current < 100) {
           // 최근 스크롤 이벤트로부터 200ms 이내에 새 스크롤 이벤트가 발생한 경우
           scrollBehavior.current = "auto";
         } else {
@@ -160,12 +159,6 @@ const MatterComponent = () => {
     };
 
     const performScroll = () => {
-      console.log(
-        "Performing scroll with deltaY:",
-        scrollDeltaY.current,
-        "behavior:",
-        scrollBehavior.current
-      );
       window.scrollBy({
         top: scrollDeltaY.current,
         left: 0,
