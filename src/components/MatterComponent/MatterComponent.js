@@ -1,6 +1,15 @@
 import { useEffect, useRef } from "react";
 import Matter from "matter-js";
 import "./MatterComponent.css";
+import B from "../../img/B.svg";
+import bee from "../../img/bee.svg";
+import D from "../../img/D.svg";
+import E from "../../img/E.svg";
+import flower from "../../img/flower.svg";
+import star from "../../img/star.svg";
+import U from "../../img/U.svg";
+import Y from "../../img/Y.svg";
+import cloud from "../../img/cloud.svg";
 
 const MatterComponent = () => {
   const sceneRef = useRef(null);
@@ -16,10 +25,12 @@ const MatterComponent = () => {
     const { Engine, Render, Runner, Bodies, Mouse, MouseConstraint, World } =
       Matter;
 
+    // 엔진과 러너 생성
     const engine = Engine.create();
     const runner = Runner.create();
     const { world } = engine;
 
+    // 렌더러 생성
     const render = Render.create({
       element: sceneRef.current,
       engine: engine,
@@ -27,15 +38,18 @@ const MatterComponent = () => {
         width: sceneRef.current.clientWidth,
         height: sceneRef.current.clientHeight,
         wireframes: false,
-        background: "#fff",
+        background: "#FADF0B", // 배경색 변경
       },
     });
 
+    // 엔진과 렌더러 레퍼런스 설정
     engineRef.current = engine;
     renderRef.current = render;
 
+    // 벽 두께 설정
     const wallThickness = 100;
 
+    // 벽 생성 함수
     const createWalls = (width, height) => {
       return [
         Bodies.rectangle(width / 2, -wallThickness / 2, width, wallThickness, {
@@ -65,17 +79,50 @@ const MatterComponent = () => {
       ];
     };
 
+    // 벽 추가
     const walls = createWalls(render.options.width, render.options.height);
     wallsRef.current = walls;
 
-    const boxA = Bodies.rectangle(render.options.width / 2, 200, 80, 80, {
-      render: {
-        fillStyle: "#000",
-      },
-    });
+    // 이미지와 밀도 및 초기 위치 설정
+    const images = [
+      { src: B, density: 0.001, x: 100, y: 200 },
+      { src: U, density: 0.001, x: 200, y: 200 },
+      { src: D, density: 0.001, x: 300, y: 200 },
+      { src: D, density: 0.001, x: 400, y: 200 },
+      { src: Y, density: 0.001, x: 500, y: 200 },
+      { src: bee, density: 0.0001, x: 600, y: 500 },
+      { src: B, density: 0.001, x: 700, y: 500 },
+      { src: E, density: 0.001, x: 800, y: 500 },
+      { src: E, density: 0.001, x: 900, y: 500 },
+      { src: star, density: 0.001, x: 1000, y: 700 },
+      { src: flower, density: 0.001, x: 1100, y: 700 },
+      { src: cloud, density: 0.001, x: 1100, y: 200 },
+    ];
 
-    World.add(world, [boxA, ...walls]);
+    // 이미지 박스 생성
+    const boxes = images.map((img, index) =>
+      Bodies.rectangle(
+        img.x, // x 좌표 설정
+        img.y, // y 좌표 설정
+        200, // 넓이 증가
+        200, // 높이 증가
+        {
+          render: {
+            sprite: {
+              texture: img.src,
+              xScale: 1.5, // 가로 크기 증가
+              yScale: 1.5, // 세로 크기 증가
+            },
+          },
+          density: img.density, // 밀도 설정
+        }
+      )
+    );
 
+    // 월드에 박스와 벽 추가
+    World.add(world, [...boxes, ...walls]);
+
+    // 마우스 생성 및 마우스 제약 추가
     const mouse = Mouse.create(render.canvas);
     const mouseConstraint = MouseConstraint.create(engine, {
       mouse: mouse,
@@ -91,9 +138,11 @@ const MatterComponent = () => {
 
     render.mouse = mouse;
 
+    // 러너와 렌더러 실행
     Runner.run(runner, engine);
     Render.run(render);
 
+    // 창 크기 조정 핸들러
     const handleResize = () => {
       const width = sceneRef.current.clientWidth;
       const height = sceneRef.current.clientHeight;
@@ -175,13 +224,7 @@ const MatterComponent = () => {
     };
   }, []);
 
-  return (
-    <div
-      ref={sceneRef}
-      className="matter-scene"
-      style={{ height: "100vh" }}
-    ></div>
-  );
+  return <div ref={sceneRef} className="matter-scene"></div>;
 };
 
 export default MatterComponent;
