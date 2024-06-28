@@ -66,30 +66,31 @@ const Header = () => {
           <button type="button" onClick={handleButtonClick}>
             만들기
           </button>
-          {isDropdownOpen && (
-            <div className="dropdown-menu" ref={dropdownRef}>
-              <ul>
-                <li>Option 1</li>
-                <li>Option 2</li>
-                <li>Option 3</li>
-                <li>Option 1</li>
-                <li>Option 2</li>
-                <li>Option 3</li>
-              </ul>
-            </div>
-          )}
+          <div
+            className={`dropdown-menu ${isDropdownOpen ? "open" : ""}`}
+            ref={dropdownRef}
+          >
+            <ul>
+              <li>Option 1</li>
+              <li>Option 2</li>
+              <li>Option 3</li>
+            </ul>
+          </div>
           <div className="profile-container" onClick={handleProfileClick}>
             <img src={myprofile} alt="My Profile" className="profile-image" />
           </div>
-          {isProfileDropdownOpen && (
-            <div className="profile-dropdown-menu" ref={profileDropdownRef}>
-              <ul>
-                <li>내 프로필</li>
-                <li>뭐시기</li>
-                <li>로그아웃</li>
-              </ul>
-            </div>
-          )}
+          <div
+            className={`profile-dropdown-menu ${
+              isProfileDropdownOpen ? "open" : ""
+            }`}
+            ref={profileDropdownRef}
+          >
+            <ul>
+              <li>Profile</li>
+              <li>Settings</li>
+              <li>Logout</li>
+            </ul>
+          </div>
         </div>
       </div>
 

@@ -100,15 +100,30 @@
 /* 드롭다운 메뉴 스타일 */
 .dropdown-menu,
 .profile-dropdown-menu {
-  position: absolute;
-  top: 50px; /* 헤더 아래에 위치하도록 조정 */
-  right: 0;
   background-color: white;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   border-radius: 5px;
   overflow: hidden;
   z-index: 9999;
   color: black;
+  max-height: 0;
+  opacity: 0;
+  transition: max-height 0.3s ease-out, opacity 0.3s ease-out;
+}
+.dropdown-menu {
+  position: absolute;
+  top: 65px;
+  right: 50px;
+}
+.profile-dropdown-menu {
+  position: absolute;
+  top: 65px;
+  right: -49px;
+}
+.dropdown-menu.open,
+.profile-dropdown-menu.open {
+  max-height: 200px; /* 실제 높이보다 충분히 큰 값 */
+  opacity: 1;
 }
 
 .dropdown-menu ul,
