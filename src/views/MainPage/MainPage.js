@@ -9,8 +9,7 @@ import header_icon from "../../img/header_icon.svg";
 import section1_bee from "../../img/section1_bee.svg";
 import section1_cloud from "../../img/section1_cloud.svg";
 import section1_flower from "../../img/section1_flower.svg";
-import scrap_yes from "../../img/scrap_yes.svg";
-import scrap_none from "../../img/scrap_none.svg";
+import Card from "./Card";
 import birthdayImage from "../../img/birthday1.jpg";
 
 const MainPage = () => {
@@ -31,37 +30,49 @@ const MainPage = () => {
       title: "동행 구합니다!",
       author: "나비123",
       views: 1373,
-      description: "안녕하세요. 이번에 OO와서 함께할 동행을 찾습니다.",
-      hashtags: ["여행", "동행", "버디비", "서머"],
+      description:
+        "안녕하세요. 이번에 OO와서 함께할 동행을 찾습니다.ㄴㅇㄴㅇㄹㄹㄴㅇ",
+      hashtags: ["슈머", "멈머", "현머", "서머", "안녕ㄴㅇㅇㄴㄹㄴㅇㄹ"],
       image: birthdayImage,
       scrap: false,
+      currentParticipants: 2,
+      maxParticipants: 4,
     },
     {
       title: "동행 구합니다!",
       author: "나비123",
       views: 1373,
-      description: "안녕하세요. 이번에 OO와서 함께할 동행을 찾습니다.",
-      hashtags: ["여행", "동행", "버디비", "멈머"],
+      description:
+        "안녕하세요. 이번에 OO와서 함께할 동행을 찾습니다.ㄴㅇㄴㅇㄹㄹㄴㅇ",
+      hashtags: ["슈머", "멈머", "현머", "서머", "안녕", "넘친다"],
       image: birthdayImage,
       scrap: false,
+      currentParticipants: 2,
+      maxParticipants: 4,
     },
     {
       title: "동행 구합니다!",
       author: "나비123",
       views: 1373,
-      description: "안녕하세요. 이번에 OO와서 함께할 동행을 찾습니다.",
-      hashtags: ["여행", "동행", "버디비", "슈머"],
+      description:
+        "안녕하세요. 이번에 OO와서 함께할 동행을 찾습니다.ㄴㅇㄴㅇㄹㄹㄴㅇ",
+      hashtags: ["슈머", "멈머", "현머", "서머", "안녕", "넘친다"],
       image: birthdayImage,
       scrap: false,
+      currentParticipants: 2,
+      maxParticipants: 4,
     },
     {
       title: "동행 구합니다!",
       author: "나비123",
       views: 1373,
-      description: "안녕하세요. 이번에 OO와서 함께할 동행을 찾습니다.",
-      hashtags: ["여행", "동행", "버디비", "현머"],
+      description:
+        "안녕하세요. 이번에 OO와서 함께할 동행을 찾습니다.ㄴㅇㄴㅇㄹㄹㄴㅇ",
+      hashtags: ["슈머", "멈머", "현머", "서머", "안녕", "넘친다"],
       image: birthdayImage,
       scrap: false,
+      currentParticipants: 2,
+      maxParticipants: 4,
     },
     // 추가적인 목업 데이터...
   ];
@@ -72,9 +83,11 @@ const MainPage = () => {
       author: "나비456",
       views: 2567,
       description: "안녕하세요. 이번에 OO와서 함께할 펀딩을 찾습니다.",
-      hashtags: ["펀딩", "지원", "버디비"],
+      hashtags: ["펀딩", "지원", "버디비", "지원", "버디비", "지원", "버디비"],
       image: birthdayImage,
       scrap: false,
+      currentParticipants: 3,
+      maxParticipants: 5,
     },
     {
       title: "펀딩 구합니다!",
@@ -84,6 +97,8 @@ const MainPage = () => {
       hashtags: ["펀딩", "지원", "버디비"],
       image: birthdayImage,
       scrap: false,
+      currentParticipants: 3,
+      maxParticipants: 5,
     },
     {
       title: "펀딩 구합니다!",
@@ -93,6 +108,8 @@ const MainPage = () => {
       hashtags: ["펀딩", "지원", "버디비"],
       image: birthdayImage,
       scrap: false,
+      currentParticipants: 3,
+      maxParticipants: 5,
     },
     {
       title: "펀딩 구합니다!",
@@ -102,6 +119,8 @@ const MainPage = () => {
       hashtags: ["펀딩", "지원", "버디비"],
       image: birthdayImage,
       scrap: false,
+      currentParticipants: 3,
+      maxParticipants: 5,
     },
     // 추가적인 목업 데이터...
   ];
@@ -122,38 +141,6 @@ const MainPage = () => {
       setFundingCards(updatedCards);
     }
   };
-
-  const createCard = (data, index, type) => (
-    <div className="card" key={index}>
-      <div className="card-image-wrapper">
-        <img src={data.image} alt="Sample" className="card-image" />
-        <img
-          src={data.scrap ? scrap_yes : scrap_none}
-          alt="Scrap"
-          className="scrap-icon"
-          onClick={() => toggleScrap(index, type)}
-        />
-      </div>
-      <div className="card-content">
-        <div className="card-line-1">
-          <h3>{data.title}</h3>
-          <span>작성자: {data.author}</span>
-        </div>
-        <p>조회수: {data.views}</p>
-        <p className="card_desc">{data.description}</p>
-        <div className="hashtags">
-          {data.hashtags.map((tag, idx) => (
-            <span
-              key={idx}
-              className={`hashtag ${idx % 2 === 0 ? "alternate-color" : ""}`}
-            >
-              #{tag}
-            </span>
-          ))}
-        </div>
-      </div>
-    </div>
-  );
 
   return (
     <Layout>
@@ -209,17 +196,29 @@ const MainPage = () => {
         <div className="recruitment-section">
           <h2>#동행 모집</h2>
           <Slider {...settings}>
-            {recruitmentCards.map((data, index) =>
-              createCard(data, index, "recruitment")
-            )}
+            {recruitmentCards.map((data, index) => (
+              <Card
+                key={index}
+                data={data}
+                index={index}
+                type="recruitment"
+                toggleScrap={toggleScrap}
+              />
+            ))}
           </Slider>
         </div>
         <div className="funding-section">
           <h2>#펀딩 모집</h2>
           <Slider {...settings}>
-            {fundingCards.map((data, index) =>
-              createCard(data, index, "funding")
-            )}
+            {fundingCards.map((data, index) => (
+              <Card
+                key={index}
+                data={data}
+                index={index}
+                type="funding"
+                toggleScrap={toggleScrap}
+              />
+            ))}
           </Slider>
         </div>
         <div className="ranking-section">

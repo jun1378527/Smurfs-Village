@@ -16,7 +16,7 @@ body {
 .main-section {
   display: flex;
   height: 800px;
-  box-sizing: border-box; /* 패딩과 테두리를 포함한 전체 높이 계산 */
+  box-sizing: border-box;
 }
 
 .left-section {
@@ -26,7 +26,7 @@ body {
   display: flex;
   flex-direction: column;
   padding: 100px 74px;
-  box-sizing: border-box; /* 패딩과 테두리를 포함한 전체 높이 계산 */
+  box-sizing: border-box;
   justify-content: space-between;
 }
 
@@ -43,10 +43,12 @@ body {
   font-family: "cooper-black-std", sans-serif;
   margin: 0;
 }
+
 .left_bee_icon img {
   margin-left: 30px;
   height: 188px;
 }
+
 .left-section .h1_buddy {
   margin: 0;
 }
@@ -77,9 +79,11 @@ body {
   height: 114px;
   text-align: left;
 }
+
 .left_bee_icon {
   display: flex;
 }
+
 .right-section {
   flex: 1; /* 줄어드는 부분 */
   min-width: 0; /* 최소 너비를 0으로 설정 */
@@ -205,9 +209,10 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 300px;
+  height: 800px;
   padding: 40px;
   background-color: #fff;
+  background-image: url("../../img/grid_temp2-18.svg"); /* 격자 무늬 배경 이미지 경로 */
   background-size: cover;
   white-space: nowrap;
 }
@@ -244,7 +249,7 @@ body {
 }
 
 .card {
-  width: 350px; /* 카드 너비 고정 */
+  width: 350px !important; /* 카드 너비 고정 */
   height: 470px; /* 카드 높이 고정 */
   background-color: #fff; /* 카드 배경 색상 */
   border-radius: 26px;
@@ -264,29 +269,16 @@ body {
   align-items: center;
 }
 
-.card-image-wrapper {
-  position: relative;
-}
-
 .card-image {
-  width: 350px;
-  height: 297px;
+  width: 350px; /* 이미지 너비 고정 */
+  height: 297px; /* 이미지 높이 고정 */
   object-fit: cover;
-  opacity: 1;
-}
-
-.scrap-icon {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  width: 40px;
-  height: 40px;
-  cursor: pointer;
+  opacity: 1; /* 이미지의 투명도 */
 }
 
 .card-content {
   width: 100%;
-  height: 172px;
+  height: 172px; /* 컨텐츠 높이 고정 */
   box-sizing: border-box;
   padding: 15px;
   display: flex;
@@ -321,25 +313,31 @@ body {
   display: flex;
   align-items: center;
   gap: 5px;
-  flex-wrap: wrap;
+  flex-wrap: nowrap; /* 한 줄로 정렬 */
+  overflow: hidden;
+  max-width: 100%;
 }
 
 .hashtag {
   margin-top: 17px;
-  background-color: #c4a1ff;
+  background-color: #c4a1ff; /* 기본 해시태그 배경 색상 */
   border-radius: 25px;
   padding: 3px 6px;
   font-size: 1em;
   color: #333;
+  white-space: nowrap; /* 한 줄로 표시 */
+  overflow: hidden; /* 넘치는 텍스트 숨김 */
 }
 
 .hashtag.alternate-color {
-  background-color: #fadf0b;
+  background-color: #fadf0b; /* 대체 해시태그 배경 색상 */
 }
 
 .slick-slide {
   padding-right: 45px;
   height: 800px;
+  display: flex !important;
+  justify-content: center;
 }
 
 .slick-list {
@@ -369,4 +367,28 @@ body {
 
 .slick-next {
   right: -40px;
+}
+
+.card-image-wrapper {
+  position: relative;
+}
+
+.participants-info {
+  position: absolute;
+  top: 18px;
+  left: 17px;
+  background: rgba(0, 0, 0);
+  color: #fff;
+  padding: 8px 10px;
+  border-radius: 50px;
+  font-size: 0.9em;
+}
+
+.scrap-icon {
+  position: absolute;
+  top: 10px;
+  right: 13px;
+  width: 55px;
+  height: 55px;
+  cursor: pointer;
 }
