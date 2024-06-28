@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Layout from "../../components/Layout/Layout";
 import MatterComponent from "../../components/MatterComponent/MatterComponent";
 import Slider from "react-slick";
@@ -10,6 +10,8 @@ import header_icon from "../../img/header_icon.svg";
 import section1_bee from "../../img/section1_bee.svg";
 import section1_cloud from "../../img/section1_cloud.svg";
 import section1_flower from "../../img/section1_flower.svg";
+import scrap_yes from "../../img/scrap_yes.svg";
+import scrap_none from "../../img/scrap_none.svg";
 
 const MainPage = () => {
   const settings = {
@@ -24,9 +26,26 @@ const MainPage = () => {
     variableWidth: true,
   };
 
+  const [scrapStates, setScrapStates] = useState({});
+
+  const toggleScrap = index => {
+    setScrapStates(prevStates => ({
+      ...prevStates,
+      [index]: !prevStates[index],
+    }));
+  };
+
   const createCard = (type, index) => (
     <div className="card" key={index}>
-      <img src={birthdayImage} alt="Sample" />
+      <div className="card-image-wrapper">
+        <img src={birthdayImage} alt="Sample" className="card-image" />
+        <img
+          src={scrapStates[index] ? scrap_yes : scrap_none}
+          alt="Scrap"
+          className="scrap-icon"
+          onClick={() => toggleScrap(index)}
+        />
+      </div>
       <div className="card-content">
         <div className="card-line-1">
           <h3>{type} 구합니다!</h3>

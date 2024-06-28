@@ -205,10 +205,9 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 800px;
+  height: 300px;
   padding: 40px;
   background-color: #fff;
-  background-image: url("../../img/grid_temp2-18.svg"); /* 격자 무늬 배경 이미지 경로 */
   background-size: cover;
   white-space: nowrap;
 }
@@ -265,16 +264,29 @@ body {
   align-items: center;
 }
 
-.card img {
-  width: 350px; /* 이미지 너비 고정 */
-  height: 297px; /* 이미지 높이 고정 */
+.card-image-wrapper {
+  position: relative;
+}
+
+.card-image {
+  width: 350px;
+  height: 297px;
   object-fit: cover;
-  opacity: 1; /* 이미지의 투명도 */
+  opacity: 1;
+}
+
+.scrap-icon {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
 }
 
 .card-content {
   width: 100%;
-  height: 172px; /* 컨텐츠 높이 고정 */
+  height: 172px;
   box-sizing: border-box;
   padding: 15px;
   display: flex;
@@ -314,7 +326,7 @@ body {
 
 .hashtag {
   margin-top: 17px;
-  background-color: #c4a1ff; /* 기본 해시태그 배경 색상 */
+  background-color: #c4a1ff;
   border-radius: 25px;
   padding: 3px 6px;
   font-size: 1em;
@@ -322,7 +334,7 @@ body {
 }
 
 .hashtag.alternate-color {
-  background-color: #fadf0b; /* 대체 해시태그 배경 색상 */
+  background-color: #fadf0b;
 }
 
 .slick-slide {
