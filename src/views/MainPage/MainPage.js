@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import Layout from "../../components/Layout/Layout";
 import MatterComponent from "../../components/MatterComponent/MatterComponent";
 import Slider from "react-slick";
-import birthdayImage from "../../img/birthday1.jpg";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import "./MainPage.css";
@@ -12,6 +11,7 @@ import section1_cloud from "../../img/section1_cloud.svg";
 import section1_flower from "../../img/section1_flower.svg";
 import scrap_yes from "../../img/scrap_yes.svg";
 import scrap_none from "../../img/scrap_none.svg";
+import birthdayImage from "../../img/birthday1.jpg";
 
 const MainPage = () => {
   const settings = {
@@ -26,56 +26,134 @@ const MainPage = () => {
     variableWidth: true,
   };
 
-  const [scrapStates, setScrapStates] = useState({});
+  const initialRecruitmentCards = [
+    {
+      title: "동행 구합니다!",
+      author: "나비123",
+      views: 1373,
+      description: "안녕하세요. 이번에 OO와서 함께할 동행을 찾습니다.",
+      hashtags: ["여행", "동행", "버디비"],
+      image: birthdayImage,
+      scrap: false,
+    },
+    {
+      title: "동행 구합니다!",
+      author: "나비123",
+      views: 1373,
+      description: "안녕하세요. 이번에 OO와서 함께할 동행을 찾습니다.",
+      hashtags: ["여행", "동행", "버디비"],
+      image: birthdayImage,
+      scrap: false,
+    },
+    {
+      title: "동행 구합니다!",
+      author: "나비123",
+      views: 1373,
+      description: "안녕하세요. 이번에 OO와서 함께할 동행을 찾습니다.",
+      hashtags: ["여행", "동행", "버디비"],
+      image: birthdayImage,
+      scrap: false,
+    },
+    {
+      title: "동행 구합니다!",
+      author: "나비123",
+      views: 1373,
+      description: "안녕하세요. 이번에 OO와서 함께할 동행을 찾습니다.",
+      hashtags: ["여행", "동행", "버디비"],
+      image: birthdayImage,
+      scrap: false,
+    },
+    // 추가적인 목업 데이터...
+  ];
 
-  const toggleScrap = index => {
-    setScrapStates(prevStates => ({
-      ...prevStates,
-      [index]: !prevStates[index],
-    }));
+  const initialFundingCards = [
+    {
+      title: "펀딩 구합니다!",
+      author: "나비456",
+      views: 2567,
+      description: "안녕하세요. 이번에 OO와서 함께할 펀딩을 찾습니다.",
+      hashtags: ["펀딩", "지원", "버디비"],
+      image: birthdayImage,
+      scrap: false,
+    },
+    {
+      title: "펀딩 구합니다!",
+      author: "나비456",
+      views: 2567,
+      description: "안녕하세요. 이번에 OO와서 함께할 펀딩을 찾습니다.",
+      hashtags: ["펀딩", "지원", "버디비"],
+      image: birthdayImage,
+      scrap: false,
+    },
+    {
+      title: "펀딩 구합니다!",
+      author: "나비456",
+      views: 2567,
+      description: "안녕하세요. 이번에 OO와서 함께할 펀딩을 찾습니다.",
+      hashtags: ["펀딩", "지원", "버디비"],
+      image: birthdayImage,
+      scrap: false,
+    },
+    {
+      title: "펀딩 구합니다!",
+      author: "나비456",
+      views: 2567,
+      description: "안녕하세요. 이번에 OO와서 함께할 펀딩을 찾습니다.",
+      hashtags: ["펀딩", "지원", "버디비"],
+      image: birthdayImage,
+      scrap: false,
+    },
+    // 추가적인 목업 데이터...
+  ];
+
+  const [recruitmentCards, setRecruitmentCards] = useState(
+    initialRecruitmentCards
+  );
+  const [fundingCards, setFundingCards] = useState(initialFundingCards);
+
+  const toggleScrap = (index, type) => {
+    if (type === "recruitment") {
+      const updatedCards = [...recruitmentCards];
+      updatedCards[index].scrap = !updatedCards[index].scrap;
+      setRecruitmentCards(updatedCards);
+    } else if (type === "funding") {
+      const updatedCards = [...fundingCards];
+      updatedCards[index].scrap = !updatedCards[index].scrap;
+      setFundingCards(updatedCards);
+    }
   };
 
-  const createCard = (type, index) => (
+  const createCard = (data, index, type) => (
     <div className="card" key={index}>
       <div className="card-image-wrapper">
-        <img src={birthdayImage} alt="Sample" className="card-image" />
+        <img src={data.image} alt="Sample" className="card-image" />
         <img
-          src={scrapStates[index] ? scrap_yes : scrap_none}
+          src={data.scrap ? scrap_yes : scrap_none}
           alt="Scrap"
           className="scrap-icon"
-          onClick={() => toggleScrap(index)}
+          onClick={() => toggleScrap(index, type)}
         />
       </div>
       <div className="card-content">
         <div className="card-line-1">
-          <h3>{type} 구합니다!</h3>
-          <span>작성자: 나비123</span>
+          <h3>{data.title}</h3>
+          <span>작성자: {data.author}</span>
         </div>
-        <p>조회수: 1,373</p>
-        <p className="card_desc">
-          안녕하세요. 이번에 OO와서 함께할 {type}을(를) 찾습니다.
-        </p>
+        <p>조회수: {data.views}</p>
+        <p className="card_desc">{data.description}</p>
         <div className="hashtags">
-          <span className="hashtag">#{type}</span>
-          <span
-            className={`hashtag ${index % 2 === 0 ? "alternate-color" : ""}`}
-          >
-            #지원
-          </span>
-          <span className="hashtag">#버디비</span>
+          {data.hashtags.map((tag, idx) => (
+            <span
+              key={idx}
+              className={`hashtag ${idx % 2 === 0 ? "alternate-color" : ""}`}
+            >
+              #{tag}
+            </span>
+          ))}
         </div>
       </div>
     </div>
   );
-
-  const recruitmentCards = [...Array(7)].map((_, index) =>
-    createCard("동행", index)
-  );
-  const fundingCards = [...Array(7)].map((_, index) =>
-    createCard("펀딩", index)
-  );
-
-  const rankingKeywords = ["버디", "버디버디", "멈머", "슈머", "현머", "서머"];
 
   return (
     <Layout>
@@ -130,20 +208,30 @@ const MainPage = () => {
         </div>
         <div className="recruitment-section">
           <h2>#동행 모집</h2>
-          <Slider {...settings}>{recruitmentCards}</Slider>
+          <Slider {...settings}>
+            {recruitmentCards.map((data, index) =>
+              createCard(data, index, "recruitment")
+            )}
+          </Slider>
         </div>
         <div className="funding-section">
           <h2>#펀딩 모집</h2>
-          <Slider {...settings}>{fundingCards}</Slider>
+          <Slider {...settings}>
+            {fundingCards.map((data, index) =>
+              createCard(data, index, "funding")
+            )}
+          </Slider>
         </div>
         <div className="ranking-section">
           <h2>현재 많은 버디비들이 보고 있어요!</h2>
           <div className="ranking-keywords">
-            {rankingKeywords.map((keyword, index) => (
-              <div key={index} className="keyword">
-                {keyword}
-              </div>
-            ))}
+            {["버디", "버디버디", "멈머", "슈머", "현머", "서머"].map(
+              (keyword, index) => (
+                <div key={index} className="keyword">
+                  {keyword}
+                </div>
+              )
+            )}
           </div>
         </div>
       </div>
