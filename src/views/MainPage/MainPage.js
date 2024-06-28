@@ -56,6 +56,8 @@ const MainPage = () => {
     createCard("펀딩", index)
   );
 
+  const rankingKeywords = ["버디", "버디버디", "멈머", "슈머", "현머", "서머"];
+
   return (
     <Layout>
       <div className="main-page">
@@ -114,6 +116,16 @@ const MainPage = () => {
         <div className="funding-section">
           <h2>#펀딩 모집</h2>
           <Slider {...settings}>{fundingCards}</Slider>
+        </div>
+        <div className="ranking-section">
+          <h2>현재 많은 버디비들이 보고 있어요!</h2>
+          <div className="ranking-keywords">
+            {rankingKeywords.map((keyword, index) => (
+              <div key={index} className="keyword">
+                {keyword}
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </Layout>

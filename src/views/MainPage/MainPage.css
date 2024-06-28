@@ -200,6 +200,38 @@ body {
   margin-bottom: 20px;
 }
 
+.ranking-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 800px;
+  padding: 40px;
+  background-color: #fff;
+  background-image: url("../../img/grid_temp2-18.svg"); /* 격자 무늬 배경 이미지 경로 */
+  background-size: cover;
+  white-space: nowrap;
+}
+
+.ranking-section h2 {
+  margin-bottom: 20px;
+}
+
+.ranking-keywords {
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.keyword {
+  background-color: #feb92e;
+  color: #000;
+  padding: 10px 15px;
+  border-radius: 15px;
+  font-size: 1.2em;
+  font-weight: bold;
+}
+
 /* Carousel Styles */
 .carousel {
   display: flex;
@@ -237,7 +269,7 @@ body {
   width: 350px; /* 이미지 너비 고정 */
   height: 297px; /* 이미지 높이 고정 */
   object-fit: cover;
-  opacity: 0.9; /* 이미지의 투명도 */
+  opacity: 1; /* 이미지의 투명도 */
 }
 
 .card-content {

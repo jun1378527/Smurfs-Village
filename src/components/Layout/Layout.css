@@ -2,7 +2,6 @@
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-  height: 8000px;
 }
 
 .header {
@@ -11,10 +10,14 @@
 
 .content {
   flex: 1;
-  padding: 20px;
   background-color: #f0f0f0;
 }
 
 .footer {
   flex-shrink: 0;
+  color: white;
+  background-color: black;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
 }

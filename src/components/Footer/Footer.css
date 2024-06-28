@@ -4,6 +4,10 @@
   color: #fff;
   text-align: center;
   padding: 10px 20px;
-  position: absolute;
   bottom: 0;
+}
+.footer p {
+  width: 450px;
+  font-size: 12px;
+  margin: 5px;
 }

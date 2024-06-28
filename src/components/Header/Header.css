@@ -2,9 +2,134 @@
 @import "../../styles/variables.css";
 
 .header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
   width: 100%;
-  background-color: #333;
   color: #fff;
   padding: 10px 20px;
+  white-space: nowrap;
+  padding-left: 0px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: white;
+  z-index: 9999;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.header-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 10px 30px;
   text-align: center;
+  margin: 0 20px;
+}
+
+.header-left img {
+  margin-right: 20px;
+}
+
+.header-right img {
+  margin: 4px;
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.search-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.search-container input {
+  padding-right: 30px; /* 검색 아이콘 공간 확보 */
+  border-radius: 15px;
+  box-sizing: border-box;
+  padding: 8px;
+  margin-right: 10px;
+}
+
+.search-container .search-icon {
+  position: absolute;
+  right: 10px;
+  width: 20px;
+  height: 20px;
+}
+
+.header-right button {
+  margin-right: 10px;
+  background-color: #ff8473;
+  border-radius: 15px;
+  box-sizing: border-box;
+  padding: 8px 13px;
+  font-weight: bold;
+}
+
+.profile-container {
+  width: 40px;
+  height: 40px;
+  overflow: hidden;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+  border: 2px solid black;
+  cursor: pointer; /* 클릭 가능한 요소임을 나타냄 */
+}
+
+.profile-image {
+  width: 100%;
+  height: auto;
+}
+
+/* 드롭다운 메뉴 스타일 */
+.dropdown-menu,
+.profile-dropdown-menu {
+  position: absolute;
+  top: 50px; /* 헤더 아래에 위치하도록 조정 */
+  right: 0;
+  background-color: white;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+  overflow: hidden;
+  z-index: 9999;
+  color: black;
+}
+
+.dropdown-menu ul,
+.profile-dropdown-menu ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.dropdown-menu li,
+.profile-dropdown-menu li {
+  padding: 10px 20px;
+  cursor: pointer;
+}
+
+.dropdown-menu li:hover,
+.profile-dropdown-menu li:hover {
+  background-color: #f0f0f0;
+}
+
+/* 페이지 컨텐츠의 맨 위에 패딩 추가 */
+body {
+  padding-top: 88px; /* 헤더의 높이와 동일하게 설정 */
 }
