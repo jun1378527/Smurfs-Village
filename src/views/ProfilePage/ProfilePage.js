@@ -13,21 +13,21 @@ const ProfilePage = () => {
         <Sidebar>
           <ul>
             <li>
-              <Link to="/profile">내 프로필</Link>
+              <Link to="">내 프로필</Link>
             </li>
             <li>
-              <Link to="/profile/posts">내 게시물</Link>
+              <Link to="posts">내 게시물</Link>
             </li>
             <li>
-              <Link to="/profile/bookmarks">즐겨찾기</Link>
+              <Link to="bookmarks">즐겨찾기</Link>
             </li>
           </ul>
         </Sidebar>
         <div className="profile-content">
           <Routes>
-            <Route path="/profile" element={<MyProfile />} />
-            <Route path="/profile/posts" element={<MyPosts />} />
-            <Route path="/profile/bookmarks" element={<Bookmarks />} />
+            <Route path="/" element={<MyProfile />} />
+            <Route path="posts" element={<MyPosts />} />
+            <Route path="bookmarks" element={<Bookmarks />} />
           </Routes>
         </div>
       </div>
