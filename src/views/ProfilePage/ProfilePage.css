@@ -1,0 +1,80 @@
+/* main */
+.main {
+    height: 100%;
+    padding: 4% 21% 0% 21%;
+    background-image: url("../../img/grid_temp2-18.svg");
+    background-size: cover;
+    background-color: #c4a1ff;
+}
+
+/* main_top */
+
+.main_top_container,
+.main_aside,
+.main_right_container {
+    border-top-width: 2px;
+    border-bottom-width: 8px;
+    border-left-width: 2px;
+    border-right-width: 8px;
+    border-style: solid;
+    border-color: black;
+    border-radius: 15px;
+    margin: 10px;
+    background-color: white;
+}
+
+.main_top_container {
+    display: flex;
+    padding: 0 0 0 30px;
+    position: relative;
+}
+.cloud_img {
+    position: absolute;
+    right: -100px;
+    bottom: -90px;
+}
+.main_top_container_img {
+    padding: 20px;
+}
+.main_top_container_title {
+    font-size: 30px;
+    font-weight: bold;
+}
+.main_top_container_desc {
+    transform: translateY(-10px);
+    font-size: 12px;
+    width: 190px;
+}
+/* main_aside */
+
+.main_aside_rightContainer_wrapper {
+    display: flex;
+}
+
+.main_aside {
+    display: flex;
+    flex: 2;
+    flex-direction: column;
+    padding: 40px 15px 0 15px;
+}
+.main_aside_word {
+    color: #505050;
+    font-size: 16px;
+    font-weight: bold;
+    border-bottom: 1px dashed gray;
+    padding-bottom: 10px;
+}
+.main_aside_word_profileSetting {
+    color: black;
+}
+.main_aside_setting_deleteId_wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    height: 100%;
+    padding: 10px;
+}
+.main_aside_setting,
+.main_aside_deleteId {
+    font-size: 15px;
+}
