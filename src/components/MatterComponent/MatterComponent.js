@@ -10,6 +10,7 @@ import star from "../../img/star.svg";
 import U from "../../img/U.svg";
 import Y from "../../img/Y.svg";
 import cloud from "../../img/cloud.svg";
+import grid from "../../img/grid_temp2-18.svg";
 
 const MatterComponent = () => {
   const sceneRef = useRef(null);
@@ -38,7 +39,7 @@ const MatterComponent = () => {
         width: sceneRef.current.clientWidth,
         height: sceneRef.current.clientHeight,
         wireframes: false,
-        background: "#FADF0B", // 배경색 변경
+        background: `url(${grid})`,
       },
     });
 

@@ -10,29 +10,29 @@ import CreateWithProjectPage from "./views/CreateProjectPage/CreateWithProjectPa
 import "./styles/global.css";
 
 const App = () => {
-    return (
-        <Router>
-            <Routes>
-                <Route path="/" exact element={<MainPage />} />
-                <Route path="/login" element={<LoginPage />} />
-                <Route path="/register" element={<RegisterPage />} />
-                <Route path="/profile/*" element={<ProfilePage />} />
-                <Route path="/projects" exact element={<ProjectListPage />} />
-                <Route
-                    path="/projects/:id"
-                    element={<ProjectDetailPage projectType="funding" />}
-                />
-                <Route
-                    path="/create-funding-project"
-                    element={<CreateFundingProjectPage />}
-                />
-                <Route
-                    path="/create-with-project"
-                    element={<CreateWithProjectPage />}
-                />
-            </Routes>
-        </Router>
-    );
+  return (
+    <Router>
+      <Routes>
+        <Route path="/" exact element={<MainPage />} />
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="/register" element={<RegisterPage />} />
+        <Route path="/profile/*" element={<ProfilePage />} />
+        <Route path="/projects" exact element={<ProjectListPage />} />
+        <Route
+          path="/projects/:id"
+          element={<ProjectDetailPage projectType="funding" />}
+        />
+        <Route
+          path="/create-funding-project"
+          element={<CreateFundingProjectPage />}
+        />
+        <Route
+          path="/create-with-project"
+          element={<CreateWithProjectPage />}
+        />
+      </Routes>
+    </Router>
+  );
 };
 
 export default App;
