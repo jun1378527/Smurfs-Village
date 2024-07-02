@@ -157,14 +157,54 @@
   text-align: center;
 }
 
+.createpage-recruitment-group {
+  border: 1px dotted #ccc;
+  padding: 20px;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.createpage-recruitment-input-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+}
+
+.createpage-number-input {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.createpage-number-input input {
+  width: 80%;
+  padding: 10px;
+  border: none;
+  border-bottom: 1px solid #ccc;
+  border-radius: 0;
+  justify-content: center;
+  outline: none;
+  text-align: center;
+}
+
 .createpage-submit-button {
   padding: 10px;
   background-color: #ffd700;
   border: none;
-  border-radius: 5px;
+  border-radius: 50px;
   font-weight: bold;
   cursor: pointer;
   text-align: center;
+  width: 332px;
+  height: 83px;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  margin: 0 auto; /* 중앙 정렬을 위한 속성 추가 */
 }
 
 .ql-editor {

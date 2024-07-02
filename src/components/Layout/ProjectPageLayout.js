@@ -171,15 +171,22 @@ const ProjectPageLayout = ({ children }) => {
                 </div>
               </div>
             </div>
-
-            <div className="createpage-form-group">
-              <label>모집 인원</label>
-              <input
-                type="number"
-                value={maxParticipants}
-                onChange={e => setMaxParticipants(e.target.value)}
-                placeholder="모집 인원"
-              />
+            <div>
+              <label>프로젝트 설정</label>
+              <div className="createpage-form-group createpage-recruitment-group">
+                <div className="createpage-recruitment-input-wrapper">
+                  <span>모집 인원:</span>
+                  <div className="createpage-number-input">
+                    <input
+                      type="number"
+                      value={maxParticipants}
+                      onChange={e => setMaxParticipants(e.target.value)}
+                      placeholder="모집 인원"
+                    />
+                  </div>
+                  <span>명</span>
+                </div>
+              </div>
             </div>
             <button type="submit" className="createpage-submit-button">
               프로젝트 등록하기
